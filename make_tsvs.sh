@@ -1,15 +1,15 @@
-function fixup {
+fixup() {
     # escape double-quotes
     # replace empty field at start of row with NULL
     # replace empty field at end of row with NULL
     # replace empty field in middle of row with NULL
     # replace \x with x except when x==N    
     cat $1 \
-	| gsed -e 's/\"/\\\"/g'       \
-	| gsed -e 's/^\t/NULL\t/g'    \
-        | gsed -e 's/\t$/\tNULL/g'    \
-	| gsed -e 's/\t\t/\tNULL\t/g' \
-	| gsed -e 's/\\\([^N]\)/|\1/g'  
+	| sed -e 's/\"/\\\"/g'       \
+	| sed -e 's/^\t/NULL\t/g'    \
+    | sed -e 's/\t$/\tNULL/g'    \
+	| sed -e 's/\t\t/\tNULL\t/g' \
+	| sed -e 's/\\\([^N]\)/|\1/g'  
 }
 
 echo "Escaping quotes, replacing empty fields, and removing escaped-characters in TSV files"

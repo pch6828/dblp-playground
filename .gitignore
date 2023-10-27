@@ -3,3 +3,5 @@ dblp.dtd
 dblp.xml
 dblp.xml.gz
 *.class
+*.tsv
+/tsv/*
